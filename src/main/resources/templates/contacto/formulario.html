@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head('Cine o Teatro Virtual')}"></head>
+<body>
+    <!-- Header -->
+    <header th:replace="~{layout/plantilla :: header}"></header>
+    
+    <!-- Navbar -->
+    <nav th:replace="~{layout/plantilla :: navbar}"></nav>
+
+    <div class="container py-4">
+        <!-- Banner Principal -->
+        <div class="jumbotron bg-light text-center py-5 mb-4">
+            <h1 class="display-4">Bienvenido al Cine Virtual</h1>
+            <p class="lead">Explora nuestras películas y obras teatrales. ¡Reserva tus entradas ahora!</p>
+            <hr class="my-4">
+            <p>Consulta nuestra cartelera, gestiona tus reservas y disfruta del mejor entretenimiento.</p>
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/registro}" class="btn btn-primary btn-lg me-2">
+                    <i class="bi bi-person-plus"></i> Regístrate
+                </a>
+                <a th:href="@{/login}" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-box-arrow-in-right"></i> Iniciar sesión
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/cartelera}" class="btn btn-primary btn-lg me-2">
+                    <i class="bi bi-tv"></i> Ver Cartelera
+                </a>
+                <a th:href="@{/mis-reservas}" class="btn btn-outline-primary btn-lg">
+                    <i class="bi bi-bookmark"></i> Mis Reservas
+                </a>
+            </div>
+        </div>
+
+        <!-- Cartelera -->
+        <div class="container py-5">
+            <h2 class="text-center mb-4">Cartelera Actual</h2>
+            <div class="row">
+                <!-- Mostrar las películas u obras -->
+                <div class="col-md-4 mb-4" th:each="pelicula : ${cartelera}">
+                    <div class="card shadow-sm">
+                        <img th:src="@{${pelicula.imagen}}" class="card-img-top" alt="Imagen de Película/Obra">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${pelicula.titulo}"></h5>
+                            <p class="card-text" th:text="${pelicula.descripcion}"></p>
+                            <a th:href="@{${'/funciones/' + pelicula.id}}" class="btn btn-primary">
+                                Ver Funciones
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Funciones Disponibles -->
+        <div class="container py-5">
+            <h2 class="text-center mb-4">Próximas Funciones</h2>
+            <div class="row">
+                <!-- Funciones de la Película -->
+                <div class="col-md-12 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Funciones disponibles para: <span th:text="${pelicula.titulo}"></span></h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Funciones disponibles en:</h6>
+                            <ul>
+                                <li th:each="funcion : ${pelicula.funciones}">
+                                    <strong th:text="${funcion.fecha}"></strong> - 
+                                    <span th:text="${funcion.hora}"></span> - 
+                                    Sala: <span th:text="${funcion.sala}"></span>
+                                    <a th:href="@{${'/reservar/' + funcion.id}}" class="btn btn-primary btn-sm">Reservar Entrada</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información de contacto y ubicación -->
+        <div class="card shadow mt-5">
+            <div class="card-header bg-light">
+                <h5 class="mb-0"><i class="bi bi-geo-alt"></i> Ubicación del Cine/Teatro</h5>
+            </div>
+            <div class="card-body">
+                <div class="ratio ratio-16x9">
+                    <!-- Mapa de Google Maps -->
+                    <iframe src="https://www.google.com/maps/embed?pb=YOUR_GOOGLE_MAPS_EMBED_LINK" 
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{layout/plantilla :: footer}"></footer>
+</body>
+</html>
+
+
