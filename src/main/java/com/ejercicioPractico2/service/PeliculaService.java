@@ -1,7 +1,7 @@
 package com.ejercicioPractico2.service;
 
-import com.practica.domain.Funcion;
-import com.practica.domain.Pelicula;
+import com.ejercicioPractico2.domain.Funcion;
+import com.ejercicioPractico2.domain.Pelicula;
 import java.util.List;
 import java.util.Optional;
 

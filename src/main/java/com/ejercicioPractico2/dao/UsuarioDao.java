@@ -1,6 +1,6 @@
 package com.ejercicioPractico2.dao;
 
-import com.practica.domain.Usuario;
+import com.ejercicioPractico2.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

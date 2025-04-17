@@ -22,14 +22,18 @@ public class Pelicula implements Serializable {
     @Column(name = "TIPO", nullable = false)
     private String tipo; 
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORIA_ID", nullable = false)
-    private Categoria categoria;
-
     @OneToMany(mappedBy = "pelicula")
     private Set<Funcion> funciones;
 
     public Pelicula() {
+    }
+
+    public Object getFunciones() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

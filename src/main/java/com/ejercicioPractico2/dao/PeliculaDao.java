@@ -1,7 +1,7 @@
 package com.ejercicioPractico2.dao;
 
-import com.practica.domain.Pelicula;
-import com.practica.domain.Funcion;
+import com.ejercicioPractico2.domain.Pelicula;
+import com.ejercicioPractico2.domain.Funcion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;

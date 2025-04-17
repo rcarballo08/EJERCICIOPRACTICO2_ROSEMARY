@@ -56,8 +56,6 @@ public class ReservaServiceImpl implements ReservaService {
         Reserva reserva = new Reserva();
         reserva.setCantidad(cantidad);
         reserva.setEstado(Reserva.EstadoReserva.RESERVADO);
-        reserva.setUsuario(usuario); 
-        reserva.setFuncion(funcion);
 
         return reservaDao.save(reserva);
     }

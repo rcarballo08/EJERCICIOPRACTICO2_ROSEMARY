@@ -8,7 +8,7 @@ public interface FuncionService {
     List<Funcion> listarTodas();
     Optional<Funcion> buscarPorId(Long id);
     Optional<Funcion> buscarPorNombre(String nombre);
-    Categoria guardar(Funcion funcion);
+    Funcion guardar(Funcion funcion);
     boolean existeNombre(String nombre);
     void eliminar(Long id);
 }

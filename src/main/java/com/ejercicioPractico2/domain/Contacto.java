@@ -24,5 +24,13 @@ public class Contacto {
     private String mensaje;
     
     private LocalDateTime fechaEnvio;
+
+    public Object getFechaEnvio() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setFechaEnvio(LocalDateTime now) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 

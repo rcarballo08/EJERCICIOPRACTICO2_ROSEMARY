@@ -40,8 +40,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario guardar(Usuario usuario) {
         // Encriptar contraseña solo si es nueva o ha sido modificada
         if (usuario.getId() == null || 
-            (usuario.getId() != null && usuario.getPassword() != null && !usuario.getPassword().isEmpty())) {
-            usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+            (usuario.getId() != null && usuario.getPassword() != null)) {
+            usuario.setPassword(passwordEncoder.encode((CharSequence) usuario.getPassword()));
         } else if (usuario.getId() != null) {
             // Si estamos actualizando y no se proporcionó contraseña mantenemos la que esta existente 
             usuarioDao.findById(usuario.getId()).ifPresent(u -> usuario.setPassword(u.getPassword()));

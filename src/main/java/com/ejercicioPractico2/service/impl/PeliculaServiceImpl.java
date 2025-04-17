@@ -1,9 +1,9 @@
 package com.ejercicioPractico2.service.impl;
 
-import com.ejercicoPractico2.dao.PeliculaDao;
-import com.ejercicioPractico2.domain.Pelicula;
+import com.ejercicioPractico2.dao.PeliculaDao;
 import com.ejercicioPractico2.domain.Funcion;
-import com.ejercicioPractico2.PeliculaService;
+import com.ejercicioPractico2.domain.Pelicula;
+import com.ejercicioPractico2.service.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -39,10 +39,10 @@ public class PeliculaServiceImpl implements PeliculaService {
         return peliculaDao.findByTipo(tipo);
     }
 
-    @Override
-    public List<Pelicula> buscarPorFuncion(Funcion funcion) {
-        return peliculaDao.findByFunciones(funcion);
-    }
+//    @Override
+//    public List<Pelicula> buscarPorFuncion(Funcion funcion) {
+//        return peliculaDao.findByFunciones(funcion);
+//    }
 
     @Override
     public Pelicula guardar(Pelicula pelicula) {
@@ -62,7 +62,7 @@ public class PeliculaServiceImpl implements PeliculaService {
     @Override
     public boolean tieneFunciones(Long id) {
         Optional<Pelicula> pelicula = peliculaDao.findById(id);
-        return pelicula.isPresent() && !pelicula.get().getFunciones().isEmpty();
+        return pelicula.isPresent();
     }
 
     @Override
@@ -71,6 +71,11 @@ public class PeliculaServiceImpl implements PeliculaService {
             pelicula.setId(id);
             peliculaDao.save(pelicula);
         }
+    }
+
+    @Override
+    public List<Pelicula> buscarPorFuncion(Funcion funcion) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

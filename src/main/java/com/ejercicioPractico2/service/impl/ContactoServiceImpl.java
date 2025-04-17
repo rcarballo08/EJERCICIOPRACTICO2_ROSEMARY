@@ -1,7 +1,7 @@
 package com.ejercicioPractico2.service.impl;
 
-import com.ejercicoPractico2.dao.ContactoDao;
-import com.ejercicioPractico2.Contacto;
+import com.ejercicioPractico2.dao.ContactoDao;
+import com.ejercicioPractico2.domain.Contacto;
 import com.ejercicioPractico2.service.ContactoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
